@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Manual Personal de HTML - Carlos Sancir</title>
+
+    <!-- SEO: meta description -->
+    <meta
+      name="description"
+      content="Manual personal de HTML con apuntes y ejemplos prácticos: estructura, atributos, links, SEO, multimedia, SVG e iframe."
+    />
+
+    <!-- Open Graph (OG) -->
+    <meta property="og:title" content="Manual Personal de HTML" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com" />
+    <meta property="og:image" content="https://example.com/og-image.png" />
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="./styles.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="./favicon.ico" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <h1 id="title">📘 Manual Personal de HTML</h1>
+      <p class="subtitle">Apuntes diarios y ejemplos prácticos — <strong>Carlos Sancir</strong></p>
+    </header>
+
+    <nav class="nav">
+      <h2 class="section-title">🧭 Índice</h2>
+      <ul>
+        <li><a href="#estructura">Estructura básica</a></li>
+        <li><a href="#atributos">Atributos</a></li>
+        <li><a href="#links">Links</a></li>
+        <li><a href="#ids-classes">IDs y Classes</a></li>
+        <li><a href="#entities">HTML Entities</a></li>
+        <li><a href="#seo">SEO y Open Graph</a></li>
+        <li><a href="#multimedia">Audio y Video</a></li>
+        <li><a href="#imagenes-svg">Imágenes y SVG</a></li>
+        <li><a href="#iframe">Iframe</a></li>
+      </ul>
+    </nav>
+
+    <main class="container">
+      <!-- ESTRUCTURA -->
+      <section id="estructura" class="card">
+        <h2 class="section-title">3️⃣ Estructura básica de un documento HTML</h2>
+        <p>
+          HTML es un lenguaje de marcado. Un elemento suele tener
+          <strong>apertura</strong>, <strong>contenido</strong> y <strong>cierre</strong>.
+        </p>
+
+        <article class="example">
+          <h3>Ejemplo de elemento</h3>
+          <p>&lt;p&gt;Hola mundo&lt;/p&gt;</p>
+        </article>
+
+        <article class="example">
+          <h3>Void Elements</h3>
+          <p>Ejemplo: <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>, <code>&lt;input&gt;</code></p>
+          <img
+            src="./img/ejemplo.jpg"
+            alt="Imagen de ejemplo (si no existe, no cargará)"
+            width="260"
+          />
+        </article>
+      </section>
+
+      <!-- ATRIBUTOS -->
+      <section id="atributos" class="card">
+        <h2 class="section-title">4️⃣ Atributos en HTML</h2>
+
+        <p>Un atributo va dentro de la etiqueta de apertura:</p>
+        <p><code>&lt;elemento atributo="valor"&gt;&lt;/elemento&gt;</code></p>
+
+        <article class="example">
+          <h3>Ejemplo con enlace (href + target)</h3>
+          <a
+            href="https://www.freecodecamp.org/news/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Visitar freeCodeCamp (abre en nueva pestaña)"
+          >
+            Visit freeCodeCamp
+          </a>
+        </article>
+
+        <article class="example">
+          <h3>Atributos booleanos (ejemplo)</h3>
+          <label>
+            Campo deshabilitado:
+            <input type="text" disabled />
+          </label>
+        </article>
+      </section>
+
+      <!-- LINKS -->
+      <section id="links" class="card">
+        <h2 class="section-title">🔗 Links</h2>
+
+        <article class="example">
+          <h3>Absolute vs Relative</h3>
+          <p>
+            Absolute:
+            <a href="https://www.w3.org/" target="_blank" rel="noopener noreferrer">W3C</a>
+          </p>
+          <p>
+            Relative (ejemplo):
+            <a href="./about.html">about.html</a>
+          </p>
+        </article>
+
+        <article class="example">
+          <h3>Link con imagen</h3>
+          <a href="https://www.w3schools.com/html/" target="_blank" rel="noopener noreferrer">
+            <img
+              src="./img/ejemplo.jpg"
+              alt="Imagen clickeable hacia W3Schools (si existe el archivo)"
+              width="120"
+            />
+          </a>
+        </article>
+
+        <article class="example">
+          <h3>mailto</h3>
+          <a href="mailto:someone@example.com">Send email</a>
+        </article>
+
+        <article class="example">
+          <h3>Botón con link (con onclick)</h3>
+          <button onclick="document.location='https://www.w3schools.com/html/'">
+            Ir a W3Schools
+          </button>
+        </article>
+      </section>
+
+      <!-- IDS & CLASSES -->
+      <section id="ids-classes" class="card">
+        <h2 class="section-title">🏷️ IDs y Classes</h2>
+
+        <p><strong>id</strong> es único. <strong>class</strong> se puede repetir.</p>
+
+        <div class="box red-box">box + red-box</div>
+        <div class="box blue-box">box + blue-box</div>
+
+        <p class="note">
+          Este título tiene id="title" (arriba). En CSS se selecciona con <code>#title</code>.
+          Las clases se seleccionan con <code>.box</code>.
+        </p>
+      </section>
+
+      <!-- ENTITIES -->
+      <section id="entities" class="card">
+        <h2 class="section-title">🧩 HTML Entities</h2>
+        <p>Se usan para escribir caracteres reservados como &lt; &gt; &amp;.</p>
+
+        <ul>
+          <li>Less than: <strong>&amp;lt;</strong> → &lt;</li>
+          <li>Greater than: <strong>&amp;gt;</strong> → &gt;</li>
+          <li>Ampersand: <strong>&amp;amp;</strong> → &amp;</li>
+          <li>Yen: <strong>&amp;yen;</strong> → &yen;</li>
+        </ul>
+      </section>
+
+      <!-- SEO -->
+      <section id="seo" class="card">
+        <h2 class="section-title">🔎 SEO y Open Graph</h2>
+        <p>
+          La <strong>meta description</strong> va en el <code>&lt;head&gt;</code> y aparece en buscadores
+          debajo del link. OG controla cómo se ve al compartir en redes.
+        </p>
+
+        <article class="example">
+          <h3>OG Tags usadas en esta página</h3>
+          <ul>
+            <li><code>og:title</code></li>
+            <li><code>og:type</code></li>
+            <li><code>og:image</code></li>
+            <li><code>og:url</code></li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- MULTIMEDIA -->
+      <section id="multimedia" class="card">
+        <h2 class="section-title">🎵 Audio y 🎬 Video</h2>
+
+        <article class="example">
+          <h3>Audio con varios formatos (source)</h3>
+          <audio controls>
+            <source src="./media/audio.ogg" type="audio/ogg" />
+            <source src="./media/audio.mp3" type="audio/mpeg" />
+            Tu navegador no soporta audio.
+          </audio>
+        </article>
+
+        <article class="example">
+          <h3>Video con poster + varios formatos</h3>
+          <video controls width="360" poster="./media/poster.jpg">
+            <source src="./media/video.mp4" type="video/mp4" />
+            <source src="./media/video.webm" type="video/webm" />
+            Tu navegador no soporta video.
+          </video>
+        </article>
+      </section>
+
+      <!-- IMAGENES Y SVG -->
+      <section id="imagenes-svg" class="card">
+        <h2 class="section-title">🖼️ Imágenes y SVG</h2>
+
+        <article class="example">
+          <h3>Imagen raster (ejemplo)</h3>
+          <img
+            src="./img/ejemplo.jpg"
+            alt="Ejemplo de imagen raster"
+            width="280"
+          />
+          <p class="note">
+            Recordatorio: siempre usar <code>alt</code>.
+          </p>
+        </article>
+
+        <article class="example">
+          <h3>SVG embebido</h3>
+          <svg
+            width="70"
+            height="70"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="Cara feliz en SVG"
+            role="img"
+          >
+            <circle cx="50" cy="50" r="45" stroke="black" stroke-width="4" fill="yellow" />
+            <circle cx="35" cy="40" r="5" fill="black" />
+            <circle cx="65" cy="40" r="5" fill="black" />
+            <path d="M35 65 Q50 80 65 65" stroke="black" stroke-width="4" fill="transparent" />
+          </svg>
+        </article>
+      </section>
+
+      <!-- IFRAME -->
+      <section id="iframe" class="card">
+        <h2 class="section-title">🧱 Iframe</h2>
+        <p>
+          Un <code>&lt;iframe&gt;</code> es un elemento reemplazado: CSS puede estilizar el contenedor,
+          pero no el contenido interno del sitio embebido.
+        </p>
+
+        <iframe
+          class="map-frame"
+          title="Mapa embebido (OpenStreetMap)"
+          width="360"
+          height="240"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik"
+        ></iframe>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>&copy; Carlos Sancir — Manual Personal de HTML</small>
+    </footer>
+
+    <!-- Script externo (buena práctica) -->
+    <script src="./script.js"></script>
+  </body>
+</html>
