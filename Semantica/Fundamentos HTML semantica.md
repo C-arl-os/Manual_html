@@ -43,6 +43,12 @@ _Apuntes diarios y ejemplos prácticos_
   - [Trabajar con elementos semánticos especializados](#trabajar-con-elementos-semánticos-especializados)
     - [How Do You Display Mathematical Equations and Chemical Formulas in HTML?](#how-do-you-display-mathematical-equations-and-chemical-formulas-in-html)
     - [How Do You Represent Computer Code in HTML?](#how-do-you-represent-computer-code-in-html)
+    - [¿Para qué se utilizan los elementos U, S y Ruby y cómo funcionan?](#para-qué-se-utilizan-los-elementos-u-s-y-ruby-y-cómo-funcionan)
+  - [En navegadores modernos muestra "Ashita" encima de "明日". En navegadores sin soporte muestra "明日 (Ashita)](#en-navegadores-modernos-muestra-ashita-encima-de-明日-en-navegadores-sin-soporte-muestra-明日-ashita)
+  - [Revisión de HTML Semántico](#revisión-de-html-semántico)
+    - [Importancia del HTML Semántico](#importancia-del-html-semántico)
+    - [Elementos HTML Semánticos](#elementos-html-semánticos)
+    - [Tarea](#tarea)
 
 ### 📝 Formato Markdown útil:
 - **Negrita**
@@ -451,7 +457,7 @@ Mantiene la cita dentro del mismo párrafo.
 
 También puede usar el atributo cite.
 
-🔹 5. Diferencia entre <blockquote> y <q>
+🔹 5. Diferencia entre `<blockquote> y <q>`
 |Elemento	|Uso	|Cómo se ve|
 |----------|------|--------------|
 |<blockquote>	|Citas largas	|Texto indentado
@@ -588,15 +594,18 @@ Se usa para mostrar:
 Se usa para hacer saltos de línea dentro de la dirección.
 
 ✅ tel:
+```html 
 <a href="tel:+15555555555">
-
+```
 
 Permite que el usuario haga clic y llame directamente desde su dispositivo (especialmente en celulares).
 
 ✅ mailto:
+
+```html
 <a href="mailto:contact@company.com">
 
-
+```
 Abre el cliente de correo del usuario para enviar un email.
 
 🔹 Desventaja de mailto
@@ -604,8 +613,8 @@ Abre el cliente de correo del usuario para enviar un email.
 Uno de los problemas es que:
 Puede ser usado por spammers.
 Algunos usuarios lo consideran inseguro o molesto.
-🔹 ¿Por qué usar <address> en lugar de <div>?
-Porque <address>:
+🔹 ¿Por qué usar `<address>` en lugar de`<div>`?
+Porque `<address>`:
 Tiene significado semántico.
 Mejora la accesibilidad.
 Es mejor práctica en desarrollo web.
@@ -683,9 +692,9 @@ Es buena práctica usarlo cuando una fecha tenga importancia estructural.
 
 En HTML existen dos elementos especiales para mostrar texto arriba o abajo de la línea normal:
 
-- <sup> → Superscript (superíndice)
-- <sub> → Subscript (subíndice)
--  <sup> – Superscript (superíndice)
+- `<sup>` → Superscript (superíndice)
+- `<sub>` → Subscript (subíndice)
+-  `<sup> `– Superscript (superíndice)
 
 Se usa para mostrar texto más pequeño y arriba de la línea normal.
 
@@ -773,28 +782,29 @@ Elemento	Posición	Uso
 
 Cuando quieres mostrar código dentro de una página web, HTML tiene dos elementos importantes:
 
-- 🔹 <code> → Para código corto en línea
+- 🔹 `<code> `→ Para código corto en línea
 
-- 🔹 <pre> → Para texto preformateado (bloques largos de código)
+- 🔹 `<pre>` → Para texto preformateado (bloques largos de código)
 
-- 🔹 1️⃣ <code> – Código en línea
+- 🔹  `<code> `– Código en línea
 
 Se usa para mostrar pequeños fragmentos de código dentro de un párrafo.
 
 Ejemplo:
+
 ```html
 <p>
   To change text color in CSS use 
   <code>color: blue;</code>
 </p>
 ```
-✅ ¿Qué hace?
+¿Qué hace?
 
 Indica que el texto es código.
 El navegador lo muestra con fuente monoespaciada (como Consolas o Courier).
 Es ideal para una sola línea.
 
-` <pre>` – Texto preformateado
+`<pre>` – Texto preformateado
 
 Se usa cuando quieres mostrar varias líneas de código.
 
@@ -808,7 +818,7 @@ Ejemplo:
   </code>
 </pre>
 ```
-✅ ¿Qué hace <pre>?
+✅ ¿Qué hace `<pre>`?
 
 Respeta los espacios.
 
@@ -821,10 +831,10 @@ Si agregas espacios o indentación, el navegador los mostrará.
 
 🔹 Diferencia rápida
 Elemento	Uso
-- <code>	Código corto dentro de texto
-- <pre>	Bloques largos de código
-- <pre> + <code>	Forma correcta para mostrar bloques de código
-🔹 Estilo por defecto de <code>
+- `<code>`	Código corto dentro de texto
+- `<pre>`	Bloques largos de código
+- `<pre>` + `<code>`	Forma correcta para mostrar bloques de código
+🔹 Estilo por defecto de `<code>`
 
 ✔ Fuente monoespaciada (monospaced font)
 
@@ -835,3 +845,271 @@ Negrita
 Cursiva
 
 Subrayado
+
+
+**words**
+
+- Unarticulated: Inarticulado / No expresado.
+- Inline: En línea / Integrado.
+- Non-textual: No textual (referente a imágenes o gráficos).
+- Misspelled: Mal escrito / Con faltas de ortografía.
+- Strikethrough: Tachado (como cuando cruzas una palabra con una línea).
+- Weather: Clima / Tiempo atmosférico.
+
+### ¿Para qué se utilizan los elementos U, S y Ruby y cómo funcionan?
+**Elemento `<u>`**
+Se usa para marcar texto que tiene una anotación no textual. El caso más común es señalar errores ortográficos. Por defecto muestra un subrayado negro.
+En HTML4 se usaba para subrayar texto visualmente, pero en HTML5 eso ya no es correcto. Si solo quieres subrayar, usa CSS.
+```html
+<p>
+  Estas palabras tienen errores:
+  <u>inccccort</u> <u>spling</u> <u>issses</u>
+</p>
+```
+
+**Elemento `<s>`**
+Se usa para texto que ya no es preciso o relevante, como una actividad cancelada o un precio viejo. Muestra el texto con una línea atravesada en el centro.
+No lo uses para mostrar cambios en documentos, para eso existen 
+`<del> `(texto eliminado) e `<ins>` (texto insertado).
+```html
+<p><s>`El recorrido del sábado saldrá al mediodía.</s></p>
+<p>Debido al mal clima, el recorrido fue cancelado.</p>
+```
+
+**Elemento `<ruby>`**
+Muestra texto pequeño encima o debajo del texto principal. Se usa principalmente para indicar la pronunciación de caracteres del Asia Oriental (chino, japonés, coreano).
+Trabaja con dos elementos auxiliares:
+
+`<rt>` — contiene el texto de la pronunciación
+`<rp>` — muestra paréntesis en navegadores que no soportan ruby
+
+```html
+<ruby>
+  明日
+  <rp>(</rp>
+  <rt>Ashita</rt>
+  <rp>)</rp>
+</ruby>
+```
+En navegadores modernos muestra "Ashita" encima de "明日". En navegadores sin soporte muestra "明日 (Ashita)
+---
+
+## Revisión de HTML Semántico
+
+### Importancia del HTML Semántico
+
+Jerarquía estructural para elementos de encabezado: Es importante usar el elemento de encabezado correcto para mantener la jerarquía estructural del contenido. El elemento h1 es el nivel más alto de encabezado y el h6 es el más bajo.
+
+Elementos HTML de presentación: Elementos que definen la apariencia del contenido. Ej. los elementos obsoletos center, big y font.
+
+Elementos HTML semánticos: Elementos que contienen significado y estructura. Ej. header, nav, figure.
+
+### Elementos HTML Semánticos
+
+Elemento header: usado para definir el encabezado de un documento o sección.
+```html
+<header>
+  <h1>CatPhotoApp</h1>
+  <p>Welcome to our cat gallery.</p>
+</header>
+```
+
+Elemento main: usado para contener el contenido principal de la página web.
+```html
+<main>
+  <section>
+    <h2>Cat Photos</h2>
+    <p>Browse adorable cat pictures.</p>
+  </section>
+</main>
+```
+
+Elemento section: usado para dividir el contenido en secciones más pequeñas.
+```html
+<section>
+  <h2>About Me</h2>
+  <p>Hi, I am Jane Doe and I am a web developer.</p>
+</section>
+```
+
+Elemento nav (Sección de navegación): representa una sección con enlaces de navegación.
+```html
+<nav>
+  <ul>
+    <li><a href="#photos">Photos</a></li>
+    <li><a href="#videos">Videos</a></li>
+  </ul>
+</nav>
+```
+
+Elemento figure: usado para contener ilustraciones y diagramas.
+```html
+<figure>
+  <img
+    src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/cats.jpg"
+    alt="Two tabby kittens sleeping together on a couch."
+  />
+  <figcaption>Cats <strong>hate</strong> other cats.</figcaption>
+</figure>
+```
+
+Elemento em (Énfasis): marca texto que tiene énfasis de estrés.
+```html
+<p>
+  Never give up on <em>your</em> dreams.
+</p>
+```
+
+Elemento i (Texto idiomático): usado para resaltar voz alternativa o estado de ánimo, términos idiomáticos de otro idioma, términos técnicos y pensamientos.
+```html
+<p>
+  There is a certain <i lang="fr">je ne sais quoi</i> in the air.
+</p>
+```
+El atributo lang dentro de la etiqueta i abierta se usa para especificar el idioma del contenido. En este caso, el idioma sería francés. El elemento i no indica si el texto es importante o no, solo muestra que es de alguna manera diferente al texto circundante.
+
+Elemento strong (Importancia fuerte): marca texto que tiene fuerte importancia.
+```html
+<p>
+  <strong>Warning:</strong> This product may cause allergic reactions.
+</p>
+```
+
+Elemento b (Llamar la atención): usado para llamar la atención sobre texto que no es importante para el significado del contenido. Se usa comúnmente para resaltar palabras clave en resúmenes o nombres de productos en reseñas.
+```html
+<p>
+  We tested several products, including the <b>SuperSound 3000</b> for audio quality, the <b>QuickCharge Pro</b> for fast charging, and the <b>Ecoclean Vacuum</b> for cleaning. The first two performed well, but the <b>Ecoclean Vacuum</b> did not meet expectations.
+</p>
+```
+
+Elemento dl (Lista de descripciones): usado para representar una lista de agrupaciones término-descripción.
+Elemento dt (Término de descripción): usado para representar el término que se define.
+Elemento dd (Detalles de descripción): usado para representar la descripción del término.
+```html
+<dl>
+  <dt>HTML</dt>
+  <dd>HyperText Markup Language</dd>
+  <dt>CSS</dt>
+  <dd>Cascading Style Sheets</dd>
+</dl>
+```
+
+Elemento blockquote (Cita en bloque): usado para representar una sección que se cita de otra fuente. Este elemento tiene un atributo cite. El valor del atributo cite es la URL de la fuente.
+```html
+<blockquote cite="https://www.freecodecamp.org/news/learn-to-code-book/">
+  "Can you imagine what it would be like to be a successful developer? To have built software systems that people rely upon?"
+</blockquote>
+```
+
+Elemento cite (Cita): usado para atribuir visualmente la fuente de la obra referenciada. Marca el título de la referencia.
+```html
+<div>
+  <blockquote cite="https://www.freecodecamp.org/news/learn-to-code-book/">
+    "Can you imagine what it would be like to be a successful developer? To have built software systems that people rely upon?"
+  </blockquote>
+  <p>
+    -Quincy Larson, <cite>How to learn to Code and Get a Developer Job [Full Book].</cite>
+  </p>
+</div>
+```
+
+Elemento q (Cita en línea): usado para representar una cita corta en línea.
+```html
+<p>
+  As Quincy Larson said,
+  <q cite="https://www.freecodecamp.org/news/learn-to-code-book/">
+    Momentum is everything.
+  </q>
+</p>
+```
+
+Elemento abbr (Abreviatura): usado para representar una abreviatura o acrónimo. Para ayudar a los usuarios a entender qué es la abreviatura o acrónimo, puedes mostrar su forma completa, una descripción legible por humanos, con el atributo title.
+```html
+<p>
+  <abbr title="HyperText Markup Language">HTML</abbr> is the foundation of the web.
+</p>
+```
+
+Elemento address (Dirección de contacto): usado para representar la información de contacto.
+
+Elemento time (Hora/Fecha): usado para representar una fecha y/o hora. El atributo datetime se usa para traducir fechas y horas a un formato legible por máquinas.
+```html
+<p>
+  The reservations are for the <time datetime="20:00">20:00 </time>
+</p>
+```
+
+Atributo datetime (Fecha ISO 8601): usado para representar fechas y horas en un formato legible por máquinas. El formato estándar es YYYY-MM-DDThh:mm:ss, con la T mayúscula siendo un separador entre la fecha y la hora.
+
+Elemento sup (Superíndice): usado para representar texto en superíndice. Casos de uso comunes para el elemento sup incluirían exponentes, letras superiores y números ordinales.
+```html
+<p>
+  2<sup>2</sup> (2 squared) is 4.
+</p>
+```
+
+Elemento sub (Subíndice): usado para representar texto en subíndice. Casos de uso comunes para el elemento subíndice incluyen fórmulas químicas, notas al pie y subíndices de variables.
+```html
+<p>
+  CO<sub>2</sub>
+</p>
+```
+
+Elemento code (Código en línea): usado para representar un fragmento de código de computadora.
+
+Elemento pre (Texto preformateado): representa texto preformateado
+```html
+<pre>
+  <code>
+    body {
+      color: red;
+    }
+  </code>
+</pre>
+```
+
+Elemento u (Anotación inarticulada): usado para representar un span de texto en línea que debería renderizarse de manera que indique que tiene una anotación no textual.
+```html
+<p>
+  You can use the unarticulated annotation element to highlight
+  <u>inccccort</u> <u>spling</u> <u>issses</u>.
+</p>
+```
+
+Elemento ruby (Anotación ruby): usado para anotar texto con explicaciones de pronunciación o significado. Un ejemplo de uso es para tipografía del Este Asiático.
+Elemento rp (Paréntesis de respaldo ruby): usado como respaldo para navegadores que carecen de soporte para mostrar anotaciones ruby.
+Elemento rt (Texto ruby): usado para indicar texto para la anotación ruby. Usualmente usado para pronunciación, o detalles de traducción en tipografía del Este Asiático.
+```html
+<ruby>
+  明日 <rp>(</rp><rt>Ashita</rt><rp>)</rp>
+</ruby>
+```
+
+Elemento s (Tachado): usado para representar contenido que ya no es preciso o relevante.
+```html
+<p>
+  <s>Tomorrow's hike will be meeting at noon.</s>
+</p>
+<p>
+  Due to unforeseen weather conditions, the hike has been canceled.
+</p>
+```
+
+Enlaces internos: usados para enlazar a otra sección de la página usando href="#id" en un elemento a y dando al elemento de destino el mismo id. Esto se usa comúnmente para enlaces de omisión, tabla de contenidos, o páginas largas con múltiples secciones.
+```html
+<a href="#about-section">Go to About Section</a>
+
+<section id="about-section">
+  <h2>About</h2>
+  <p>This is the about section of the page.</p>
+</section>
+```
+
+### Tarea
+
+Revisa los temas y conceptos de HTML Semántico.
+
+Por favor completa la tarea
+Enviar
+Pedir Ayuda
+Navegado a Revisión de HTML Semántico
