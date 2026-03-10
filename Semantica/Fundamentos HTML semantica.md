@@ -48,7 +48,6 @@ _Apuntes diarios y ejemplos prácticos_
   - [Revisión de HTML Semántico](#revisión-de-html-semántico)
     - [Importancia del HTML Semántico](#importancia-del-html-semántico)
     - [Elementos HTML Semánticos](#elementos-html-semánticos)
-    - [Tarea](#tarea)
 
 ### 📝 Formato Markdown útil:
 - **Negrita**
@@ -1105,11 +1104,3 @@ Enlaces internos: usados para enlazar a otra sección de la página usando href=
 </section>
 ```
 
-### Tarea
-
-Revisa los temas y conceptos de HTML Semántico.
-
-Por favor completa la tarea
-Enviar
-Pedir Ayuda
-Navegado a Revisión de HTML Semántico
