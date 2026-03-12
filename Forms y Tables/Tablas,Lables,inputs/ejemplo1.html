@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="url-goes-here">
+      <!-- input elements go here -->
+    </form>
+
+    <form action="">
+      <input type="text" />
+    </form>
+
+    <form action="">
+      <label>
+        Full Name:
+        <input type="text" />
+      </label>
+    </form>
+
+    <form action="">
+      <label for="email"> Email Address: </label>
+      <input type="email" id="email" />
+    </form>
+
+    <form action="">
+      <label for="email"> Email Address: </label>
+      <input type="email" id="email" placeholder="example@email.com" />
+      <input type="submit" />
+    </form>
+    <h2>Table Example</h2>
+    <!-- ❌ Roto -for="correo" pero id="email", son diferentes -->
+<label for="correo">Correo:</label>
+<input type="email" id="email" />
+
+<!-- ✅ Correcto - ambos dicen "correo" -->
+<label for="correo">Correo:</label>
+<input type="email" id="correo" />
+  </body>
+</html>
