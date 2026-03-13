@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Trifolar – Deep Learning + IoT · FIUSAC</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --r:#B91C1C;--a:#1D4ED8;--v:#15803D;
+  --k:#111827;--g:#4B5563;--l:#E5E7EB;--bg:#F9FAFB;
+}
+body{background:#888;font-family:'DM Sans',sans-serif;padding:16px;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.lbl{width:279mm;font-size:10px;font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase;}
+
+/* HOJA */
+.hoja{width:279mm;height:216mm;background:#fff;display:flex;flex-direction:row;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.35);}
+.hoja::before,.hoja::after{content:'';position:absolute;top:0;bottom:0;border-left:1.2px dashed #C0C0C0;pointer-events:none;z-index:20;}
+.hoja::before{left:93mm;}.hoja::after{left:186mm;}
+
+/* PANEL */
+.panel{width:93mm;height:216mm;display:flex;flex-direction:column;overflow:hidden;border-right:1px solid var(--l);}
+.panel:last-child{border-right:none;}
+
+/* CABECERA */
+.ph{padding:5px 11px 4px;border-bottom:2px solid var(--r);flex-shrink:0;}
+.ph h2{font-family:'Syne',sans-serif;font-size:7.5px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--r);}
+.ph.a{border-color:var(--a);}.ph.a h2{color:var(--a);}
+.ph.v{border-color:var(--v);}.ph.v h2{color:var(--v);}
+.ph.k{border-color:var(--k);}.ph.k h2{color:var(--k);}
+
+/* CUERPO */
+.pb{padding:6px 11px;flex:1;overflow:hidden;display:flex;flex-direction:column;gap:5px;}
+
+/* SECCIÓN */
+.st{font-family:'Syne',sans-serif;font-size:6.5px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--r);border-bottom:1px solid var(--l);padding-bottom:1.5px;margin-bottom:2px;}
+.st.a{color:var(--a);}.st.v{color:var(--v);}.st.k{color:var(--k);}
+
+/* BULLET */
+.bl{display:flex;flex-direction:column;gap:2px;}
+.bi{display:flex;align-items:flex-start;gap:4px;font-size:7px;color:var(--g);line-height:1.38;}
+.bi::before{content:'›';color:var(--r);font-weight:700;font-size:9px;line-height:1.05;flex-shrink:0;}
+.bi.a::before{color:var(--a);}.bi.v::before{color:var(--v);}.bi.k::before{color:var(--k);}
+.bi b{color:var(--k);font-weight:600;}
+
+/* CARD */
+.cd{border-left:2.5px solid var(--r);padding:4px 7px;background:var(--bg);border-radius:0 3px 3px 0;}
+.cd.a{border-color:var(--a);}.cd.v{border-color:var(--v);}.cd.k{border-color:var(--k);}
+.cd .ct{font-family:'Syne',sans-serif;font-size:6.5px;font-weight:700;color:var(--k);margin-bottom:1.5px;}
+.cd p{font-size:7px;color:var(--g);line-height:1.38;}
+
+/* PASOS */
+.ps{display:flex;align-items:flex-start;gap:5px;}
+.nm{min-width:14px;height:14px;border-radius:50%;border:1.5px solid var(--r);color:var(--r);font-family:'Syne',sans-serif;font-size:6.5px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.nm.a{border-color:var(--a);color:var(--a);}.nm.v{border-color:var(--v);color:var(--v);}.nm.k{border-color:var(--k);color:var(--k);}
+.ps p{font-size:7px;color:var(--g);line-height:1.38;}
+.ps p b{color:var(--k);font-weight:600;}
+
+/* TABLA */
+table{width:100%;border-collapse:collapse;}
+th{font-family:'Syne',sans-serif;font-size:6px;font-weight:700;text-transform:uppercase;padding:2.5px 5px;text-align:left;color:#fff;background:var(--r);}
+th.a{background:var(--a);}th.v{background:var(--v);}th.k{background:var(--k);}
+td{font-size:6.8px;padding:2.5px 5px;border-bottom:1px solid #F3F4F6;color:var(--g);vertical-align:top;}
+tr:nth-child(even) td{background:var(--bg);}
+
+/* BADGE */
+.bds{display:flex;flex-wrap:wrap;gap:2.5px;}
+.bd{border:1px solid var(--r);color:var(--r);border-radius:20px;padding:1px 5px;font-family:'Syne',sans-serif;font-size:5.8px;font-weight:700;text-transform:uppercase;}
+.bd.a{border-color:var(--a);color:var(--a);}
+.bd.v{border-color:var(--v);color:var(--v);}
+
+/* PIR */
+.pir{display:flex;flex-direction:column;gap:3px;}
+.pr{display:flex;align-items:center;gap:6px;}
+.pt{width:44px;flex-shrink:0;text-align:center;border:1.5px solid var(--r);color:var(--r);font-family:'Syne',sans-serif;font-size:6px;font-weight:800;border-radius:3px;padding:2.5px 3px;text-transform:uppercase;line-height:1.2;}
+.pt.a{border-color:var(--a);color:var(--a);}.pt.v{border-color:var(--v);color:var(--v);}
+.pd{font-size:7px;color:var(--g);line-height:1.35;}
+
+/* QUOTE */
+.qt{border:1.5px solid var(--k);border-radius:4px;padding:6px 9px;text-align:center;}
+.qt p{font-size:7.2px;font-style:italic;color:var(--g);line-height:1.5;}
+.qt .by{font-family:'Syne',sans-serif;font-size:5.8px;font-weight:700;color:var(--k);margin-top:3px;}
+
+/* INFO BOX */
+.ib{border:1px solid var(--v);border-radius:3px;padding:4px 7px;}
+.ib p{font-size:7px;color:var(--k);line-height:1.38;}
+
+/* HR */
+hr{border:none;border-top:1px solid var(--l);flex-shrink:0;}
+
+/* ── PORTADA ── */
+.ptop{padding:11px 12px 9px;border-bottom:2.5px solid var(--r);flex-shrink:0;}
+.uni{font-size:5.5px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:#9CA3AF;margin-bottom:6px;}
+.tit{font-family:'Syne',sans-serif;font-weight:800;font-size:26px;line-height:1.0;color:var(--k);text-transform:uppercase;}
+.tit span{color:var(--r);}
+.sub{font-size:7px;color:var(--g);margin-top:6px;line-height:1.45;border-left:2.5px solid var(--r);padding-left:7px;}
+
+.defs{padding:7px 11px;display:flex;flex-direction:column;gap:4px;border-bottom:1px solid var(--l);flex-shrink:0;}
+.dc{border-left:2.5px solid var(--r);padding:3.5px 7px;background:var(--bg);border-radius:0 3px 3px 0;}
+.dc.a{border-color:var(--a);}
+.dc .dt{font-family:'Syne',sans-serif;font-size:6px;font-weight:800;text-transform:uppercase;color:var(--r);margin-bottom:1.5px;}
+.dc.a .dt{color:var(--a);}
+.dc p{font-size:7px;color:var(--g);line-height:1.38;}
+
+.eqsec{padding:6px 11px 5px;flex:1;overflow:hidden;display:flex;flex-direction:column;}
+.eqt{font-family:'Syne',sans-serif;font-size:6px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--r);border-bottom:1px solid var(--l);padding-bottom:2px;margin-bottom:4px;}
+.autores{display:flex;flex-direction:column;gap:2.5px;flex:1;}
+.autor{display:flex;align-items:center;gap:5px;border:1px solid var(--l);border-radius:20px;padding:2px 7px 2px 2px;}
+.av{width:17px;height:17px;border-radius:50%;border:1.5px solid var(--r);color:var(--r);font-family:'Syne',sans-serif;font-size:5.5px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ai .nom{font-size:7px;font-weight:600;color:var(--k);line-height:1.2;}
+.ai .car{font-size:6px;color:#9CA3AF;}
+
+/* sección extra portada */
+.extra{padding:5px 11px;border-top:1px solid var(--l);flex-shrink:0;}
+.extra .est{font-family:'Syne',sans-serif;font-size:6px;font-weight:800;text-transform:uppercase;color:var(--r);margin-bottom:3px;}
+.extra .bl2{display:flex;flex-direction:column;gap:2px;}
+.extra .bi2{font-size:6.8px;color:var(--g);line-height:1.35;padding-left:9px;position:relative;}
+.extra .bi2::before{content:'▸';color:var(--r);position:absolute;left:0;font-size:7px;}
+
+.pie{padding:4px 11px;border-top:1px solid var(--l);background:var(--bg);flex-shrink:0;}
+.pie p{font-size:5.8px;color:#9CA3AF;line-height:1.4;}
+.pie b{color:var(--g);}
+
+/* PRINT */
+@media print{
+  body{background:#fff !important;padding:0;gap:0;}
+  .lbl,.tip{display:none;}
+  .hoja{box-shadow:none;page-break-after:always;}
+  .hoja:last-of-type{page-break-after:auto;}
+}
+</style>
+</head>
+<body>
+
+<div class="lbl">▶ LADO 1 — FRENTE</div>
+<div class="hoja">
+
+  <!-- F1: PORTADA -->
+  <div class="panel">
+    <div class="ptop">
+      <div class="uni">USAC · FIUSAC · Ciencias y Sistemas · Arq. de Computadoras 2</div>
+      <div class="tit">Deep<br><span>Learn</span><br>+ IoT</div>
+      <div class="sub">Sistemas inteligentes que recopilan, analizan y actúan sobre datos del mundo físico en tiempo real.</div>
+    </div>
+    <div class="defs">
+      <div class="dc"><div class="dt">¿Qué es IoT?</div><p>Red de dispositivos físicos interconectados que capturan y transmiten datos del entorno sin intervención humana directa.</p></div>
+      <div class="dc a"><div class="dt">¿Qué es Deep Learning?</div><p>Subcampo de la IA basado en redes neuronales profundas que aprenden patrones complejos directamente desde datos crudos.</p></div>
+    </div>
+    <div class="eqsec">
+      <div class="eqt">Equipo Presentador</div>
+      <div class="autores">
+        <div class="autor"><div class="av">IP</div><div class="ai"><div class="nom">Iris Carolina Paz Guzmán</div><div class="car">202101728</div></div></div>
+        <div class="autor"><div class="av">WE</div><div class="ai"><div class="nom">Wylson E. Esquivel Cuy</div><div class="car">202105429</div></div></div>
+        <div class="autor"><div class="av">JR</div><div class="ai"><div class="nom">Julio Fernando Ramos Mus</div><div class="car">202200044</div></div></div>
+        <div class="autor"><div class="av">JC</div><div class="ai"><div class="nom">Josue Daniel Chávez Portillo</div><div class="car">202100033</div></div></div>
+        <div class="autor"><div class="av">BS</div><div class="ai"><div class="nom">Brandon O. Seijas Morales</div><div class="car">202010035</div></div></div>
+        <div class="autor"><div class="av">JA</div><div class="ai"><div class="nom">Jacklyn A. Cifuentes Ruiz</div><div class="car">202201432</div></div></div>
+        <div class="autor"><div class="av">CS</div><div class="ai"><div class="nom">Carlos E. Sancir Reyes</div><div class="car">202201131</div></div></div>
+      </div>
+    </div>
+    <!-- Relleno: objetivo del trifolar -->
+    <div class="extra">
+      <div class="est">Objetivo del trabajo</div>
+      <div class="bl2">
+        <div class="bi2">Comprender cómo DL e IoT se integran en sistemas inteligentes.</div>
+        <div class="bi2">Aplicar arquitecturas Edge/Fog/Cloud en contextos reales.</div>
+        <div class="bi2">Optimizar modelos para dispositivos con recursos limitados.</div>
+      </div>
+    </div>
+    <div class="pie"><p><b>Arquitectura de Computadoras 2</b> · FIUSAC · 2025</p></div>
+  </div>
+
+  <!-- F2: FUNDAMENTOS DL -->
+  <div class="panel">
+    <div class="ph"><h2>Fundamentos de Deep Learning</h2></div>
+    <div class="pb">
+      <div>
+        <div class="st">¿Por qué DL en IoT?</div>
+        <div class="bl">
+          <div class="bi"><b>Patrones complejos</b> sin reglas explícitas programadas.</div>
+          <div class="bi"><b>Entornos dinámicos:</b> se adapta a cambios continuos del sensor.</div>
+          <div class="bi"><b>Decisiones locales</b> sin depender de la nube constantemente.</div>
+          <div class="bi"><b>Restricciones IoT:</b> bajo consumo energético, latencia estricta y RAM limitada.</div>
+          <div class="bi"><b>Volumen masivo:</b> IoT genera datos heterogéneos continuos que solo DL puede procesar eficientemente.</div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st">Modelos principales para IoT</div>
+        <div class="cd" style="margin-bottom:4px;">
+          <div class="ct">🔲 CNN – Redes Convolucionales</div>
+          <p>Ideales para imágenes y señales 2D. Extraen características automáticamente (Feature Maps). Usadas en visión artificial con cámaras IoT y detección de objetos en tiempo real.</p>
+        </div>
+        <div class="cd">
+          <div class="ct">🔁 RNN / LSTM / GRU</div>
+          <p>Para series temporales de sensores (temperatura, vibración, presión). Capturan dependencias en el tiempo. LSTM evita el problema del gradiente vanishing. GRU es más ligero que LSTM.</p>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st">Técnicas de optimización</div>
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <div class="ps"><div class="nm">1</div><p><b>Quantization:</b> float32 → int8. Menos RAM, más velocidad de inferencia en dispositivos de baja potencia.</p></div>
+          <div class="ps"><div class="nm">2</div><p><b>Pruning:</b> Elimina conexiones neuronales poco relevantes, reduce tamaño del modelo hasta un 90%.</p></div>
+          <div class="ps"><div class="nm">3</div><p><b>Transfer Learning:</b> Reutiliza modelos preentrenados (ImageNet, etc.) para nuevas tareas IoT sin reentrenar desde cero.</p></div>
+          <div class="ps"><div class="nm">4</div><p><b>Knowledge Distillation:</b> Modelo grande (teacher) entrena a uno pequeño (student), ideal para microcontroladores.</p></div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st">Métricas de evaluación en IoT</div>
+        <table>
+          <thead><tr><th>Métrica</th><th>Descripción</th></tr></thead>
+          <tbody>
+            <tr><td><b>Accuracy</b></td><td>Precisión del modelo (%)</td></tr>
+            <tr><td><b>Latencia</b></td><td>Tiempo de respuesta (ms)</td></tr>
+            <tr><td><b>Throughput</b></td><td>Inferencias por segundo</td></tr>
+            <tr><td><b>Energy/Inf.</b></td><td>Consumo energético (mJ)</td></tr>
+            <tr><td><b>Falsos +/-</b></td><td>Tasa de error del modelo</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div>
+        <div class="st">Protocolos de comunicación IoT</div>
+        <div class="bl">
+          <div class="bi"><b>MQTT:</b> Publicación/suscripción. Ligero, ideal para sensores con baja energía.</div>
+          <div class="bi"><b>REST API / CoAP:</b> Peticiones HTTP adaptadas a dispositivos embebidos.</div>
+          <div class="bi"><b>LoRaWAN:</b> Largo alcance, muy bajo consumo. Agricultura y ciudades.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- F3: APLICACIONES -->
+  <div class="panel">
+    <div class="ph a"><h2>Aplicaciones &amp; Casos de Uso</h2></div>
+    <div class="pb">
+      <div>
+        <div class="st a">Sectores de aplicación</div>
+        <div class="cd a" style="margin-bottom:3px;"><div class="ct">🏥 Salud</div><p>Monitoreo de pacientes y detección temprana de anomalías vitales mediante sensores portátiles conectados en tiempo real.</p></div>
+        <div class="cd a" style="margin-bottom:3px;"><div class="ct">🏭 Industria 4.0</div><p>Mantenimiento predictivo: sensores de vibración y temperatura predicen fallas mecánicas antes de que ocurran, reduciendo downtime.</p></div>
+        <div class="cd a" style="margin-bottom:3px;"><div class="ct">🌾 Agricultura Inteligente</div><p>Redes neuronales locales analizan microclimas para optimizar riego y prevenir plagas de forma autónoma.</p></div>
+        <div class="cd a"><div class="ct">🏙️ Smart Cities</div><p>Gestión de tráfico, energía y seguridad en tiempo real. Arquitectura Fog + Cloud para ciudades inteligentes escalables.</p></div>
+      </div>
+      <hr>
+      <div>
+        <div class="st a">Demo: ESP32 + Sensor DHT11</div>
+        <div class="bds" style="margin-bottom:4px;">
+          <span class="bd a">ESP32</span><span class="bd a">DHT11</span><span class="bd a">TFLite</span><span class="bd a">Telegram Bot</span><span class="bd a">Edge AI</span>
+        </div>
+        <div class="bl">
+          <div class="bi a"><b>Hardware:</b> Microcontrolador ESP32 doble núcleo + sensor DHT11 en pin D15.</div>
+          <div class="bi a"><b>Software:</b> Lógica de red neuronal (pesos y sesgos) embebida para clasificar ambiente localmente.</div>
+          <div class="bi a"><b>Salida:</b> Predicciones notificadas en tiempo real vía chatbot de Telegram.</div>
+          <div class="bi a"><b>Sin nube:</b> Toda la inferencia ocurre en el dispositivo (Edge AI puro).</div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st a">Métricas de éxito del sistema</div>
+        <table>
+          <thead><tr><th class="a">Tipo</th><th class="a">Indicadores clave</th></tr></thead>
+          <tbody>
+            <tr><td><b>Técnicas</b></td><td>Accuracy, latencia, falsos positivos/negativos</td></tr>
+            <tr><td><b>Operativas</b></td><td>Reducción de costos, ahorro energía, downtime</td></tr>
+            <tr><td><b>Negocio</b></td><td>ROI, productividad, satisfacción del usuario</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div>
+        <div class="st a">¿Por qué IoT necesita IA?</div>
+        <div class="bl">
+          <div class="bi a">Convierte datos crudos en <b>decisiones inteligentes</b> automáticas.</div>
+          <div class="bi a">Actúa en <b>tiempo real</b> sin esperar intervención humana.</div>
+          <div class="bi a">Escala a <b>gran volumen</b> de datos de sensores simultáneos.</div>
+          <div class="bi a">Reduce <b>costos operativos</b> y errores humanos en procesos críticos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /hoja frente -->
+
+<div class="lbl">◀ LADO 2 — DORSO</div>
+<div class="hoja">
+
+  <!-- D1: HERRAMIENTAS + MLOPS + CONCLUSIONES -->
+  <div class="panel">
+    <div class="ph k"><h2>Herramientas, MLOps &amp; Conclusiones</h2></div>
+    <div class="pb">
+      <div>
+        <div class="st k">Frameworks de implementación</div>
+        <table>
+          <thead><tr><th class="k">Framework</th><th class="k">Uso principal</th></tr></thead>
+          <tbody>
+            <tr><td><b>TFLite</b></td><td>Microcontroladores y Android. Bajo consumo de RAM. Cuantización nativa.</td></tr>
+            <tr><td><b>PyTorch Mobile</b></td><td>Desplegar modelos PyTorch en iOS/Android sin cambiar framework.</td></tr>
+            <tr><td><b>ONNX</b></td><td>Formato puente entre frameworks. Interoperabilidad universal.</td></tr>
+            <tr><td><b>EdgeTPU</b></td><td>Chip Google Coral. Inferencias ultrarrápidas, muy bajo consumo energético.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div>
+        <div class="st k">Compiladores y herramientas de optimización</div>
+        <div class="bl">
+          <div class="bi k"><b>TVM (Apache):</b> Compilador de modelos DL para hardware específico (ARM, RISC-V).</div>
+          <div class="bi k"><b>TFLite Converter:</b> Convierte modelos TensorFlow a formato .tflite optimizado.</div>
+          <div class="bi k"><b>ONNX Runtime:</b> Ejecuta modelos ONNX con aceleración de hardware automática.</div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st k">MLOps para IoT — Ciclo de vida</div>
+        <div class="cd k" style="margin-bottom:3px;"><div class="ct">🔄 CI/CD de Modelos</div><p>Entrenamiento automático → Validación → Despliegue continuo sin intervención manual. Pipelines automatizados.</p></div>
+        <div class="cd k" style="margin-bottom:3px;"><div class="ct">📡 OTA – Over The Air</div><p>Actualización remota de modelos sin acceso físico al dispositivo IoT en campo.</p></div>
+        <div class="cd k"><div class="ct">📊 Monitoreo en producción</div><p>Precisión, latencia, energía y drift de datos. Alertas automáticas cuando el modelo degrada su rendimiento.</p></div>
+      </div>
+      <hr>
+      <div>
+        <div class="st k">Riesgos y consideraciones</div>
+        <div class="bl">
+          <div class="bi k"><b>Hardware limitado:</b> RAM insuficiente, sensores de bajo costo con mucho ruido.</div>
+          <div class="bi k"><b>Seguridad:</b> Cifrado de comunicaciones e integridad de modelos embebidos.</div>
+          <div class="bi k"><b>Privacidad:</b> Federated Learning como solución para datos sensibles.</div>
+          <div class="bi k"><b>Actualización:</b> Difícil sin OTA cuando los dispositivos están en campo.</div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st k">Conclusiones clave</div>
+        <div class="bl">
+          <div class="bi k">IoT + DL = sistemas autónomos e inteligentes en tiempo real.</div>
+          <div class="bi k">Calidad del dato &gt; Complejidad del modelo. Siempre.</div>
+          <div class="bi k">Edge Computing reduce latencia, costos y dependencia de internet.</div>
+          <div class="bi k">Quantization y Pruning son esenciales en dispositivos limitados.</div>
+          <div class="bi k">Edge, Fog y Cloud se complementan, no compiten entre sí.</div>
+        </div>
+      </div>
+      <hr>
+      <div class="qt">
+        <p>"La inteligencia no reside en la nube, sino donde los datos se generan."</p>
+        <div class="by">— Equipo DL + IoT · FIUSAC 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D2: DATOS IoT + PIPELINE -->
+  <div class="panel">
+    <div class="ph v"><h2>Datos IoT: Captura &amp; Pipeline</h2></div>
+    <div class="pb">
+      <div>
+        <div class="st v">Tipos de sensores físicos</div>
+        <div class="bl">
+          <div class="bi v"><b>DHT11 / DHT22:</b> Temperatura y humedad relativa del ambiente.</div>
+          <div class="bi v"><b>MPU6050:</b> Presión barométrica y aceleración (3 ejes).</div>
+          <div class="bi v"><b>Cámaras OV2640:</b> Visión artificial y reconocimiento de objetos.</div>
+          <div class="bi v"><b>Micrófonos MEMS:</b> Detección de sonidos anómalos en maquinaria.</div>
+          <div class="bi v"><b>Sensores de gas MQ:</b> Detección de CO₂, metano, humo.</div>
+          <div class="bi v"><b>Ultrasónicos HC-SR04:</b> Proximidad y medición de nivel.</div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st v">Pipeline de datos IoT</div>
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <div class="ps"><div class="nm v">1</div><p><b>Sensor físico:</b> Captura datos del entorno continuamente en tiempo real.</p></div>
+          <div class="ps"><div class="nm v">2</div><p><b>Gateway / Protocolo:</b> Wi-Fi, Bluetooth, LoRaWAN o MQTT transmiten los datos al siguiente nivel.</p></div>
+          <div class="ps"><div class="nm v">3</div><p><b>Preprocesamiento:</b> Limpieza, normalización, filtrado de ruido y etiquetado de datos.</p></div>
+          <div class="ps"><div class="nm v">4</div><p><b>Modelo DL:</b> Inferencia local en Edge o procesamiento en Fog/Cloud según latencia requerida.</p></div>
+          <div class="ps"><div class="nm v">5</div><p><b>Acción / Alerta:</b> Notificación push, activación de actuador físico o actualización de dashboard.</p></div>
+          <div class="ps"><div class="nm v">6</div><p><b>Retroalimentación:</b> Datos de producción realimentan el ciclo de entrenamiento del modelo.</p></div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st v">Calidad de los datos</div>
+        <div class="cd v" style="margin-bottom:4px;"><div class="ct">⚠ Desafíos comunes en IoT</div><p>Datos incompletos · Datos corruptos · Ruido en señales · Valores atípicos · Sensores defectuosos de bajo costo · Desincronización temporal.</p></div>
+        <div class="ib"><p><b>Regla clave:</b> Calidad del dato › Complejidad del modelo. Un dato malo destruye el mejor algoritmo de Deep Learning.</p></div>
+      </div>
+      <hr>
+      <div>
+        <div class="st v">Etiquetado y sincronización</div>
+        <div class="bl">
+          <div class="bi v"><b>Manual:</b> Humanos revisan y etiquetan cada muestra. Costoso pero preciso.</div>
+          <div class="bi v"><b>Automático:</b> Reglas o clustering etiquetan sin intervención humana. Escalable.</div>
+          <div class="bi v"><b>Semi-automático:</b> Modelo sugiere etiqueta, humano confirma. Balance costo/calidad.</div>
+          <div class="bi v"><b>Timestamps:</b> Sincronización temporal de múltiples sensores para correlacionar eventos.</div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st v">Frecuencia de muestreo</div>
+        <div class="bl">
+          <div class="bi v"><b>Alta frecuencia:</b> Vibraciones industriales, audio (>1 kHz).</div>
+          <div class="bi v"><b>Media frecuencia:</b> Temperatura, humedad (cada 1–60 seg).</div>
+          <div class="bi v"><b>Por eventos:</b> Movimiento, apertura de puerta, alarmas.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D3: ARQUITECTURA EDGE/FOG/CLOUD -->
+  <div class="panel">
+    <div class="ph a"><h2>Arquitectura: Edge · Fog · Cloud</h2></div>
+    <div class="pb">
+      <div>
+        <div class="st a">Las 3 capas de procesamiento</div>
+        <div class="pir">
+          <div class="pr"><div class="pt v">☁ Cloud</div><div class="pd">Entrenamiento masivo, almacenamiento a escala. Alta escalabilidad. AWS, Azure, Google Cloud. Mayor latencia, requiere internet.</div></div>
+          <div class="pr"><div class="pt a">🌫 Fog</div><div class="pd">Infraestructura intermedia descentralizada. Reduce carga de la nube, mejora resiliencia. Routers industriales, gateways locales.</div></div>
+          <div class="pr"><div class="pt">⚡ Edge</div><div class="pd">Procesamiento en/cerca del dispositivo. Muy baja latencia, funciona sin internet. Cámaras, sensores, vehículos autónomos.</div></div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st a">Ventajas y limitaciones</div>
+        <table>
+          <thead><tr><th class="a">Capa</th><th class="a">Ventaja</th><th class="a">Limitación</th></tr></thead>
+          <tbody>
+            <tr><td><b>Edge</b></td><td>Latencia mínima, offline</td><td>Cómputo limitado</td></tr>
+            <tr><td><b>Fog</b></td><td>Reduce carga cloud</td><td>Infraestructura extra</td></tr>
+            <tr><td><b>Cloud</b></td><td>Escalabilidad total</td><td>Latencia alta</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div>
+        <div class="st a">Patrones de arquitectura</div>
+        <table>
+          <thead><tr><th class="a">Patrón</th><th class="a">Entrenamiento</th><th class="a">Inferencia</th></tr></thead>
+          <tbody>
+            <tr><td><b>Edge-only</b></td><td>Edge</td><td>Edge local</td></tr>
+            <tr><td><b>Cloud-only</b></td><td>Cloud</td><td>Cloud</td></tr>
+            <tr><td><b>Hybrid</b></td><td>Cloud</td><td>Edge</td></tr>
+            <tr><td><b>Federated</b></td><td>Distribuido</td><td>Edge local</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div>
+        <div class="st a">¿Cuándo usar cada capa?</div>
+        <div class="bl">
+          <div class="bi a"><b>Latencia muy baja:</b> Edge para inferencia, Fog/Cloud para entrenamiento.</div>
+          <div class="bi a"><b>Datos sensibles:</b> Edge o Federated Learning protegen privacidad.</div>
+          <div class="bi a"><b>Sin conectividad:</b> Todo en Edge, sincroniza cuando haya red.</div>
+          <div class="bi a"><b>Alta escalabilidad:</b> Cloud para entrenar e inferir gran volumen.</div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st a">Casos de uso por sector</div>
+        <div class="bl">
+          <div class="bi a"><b>Smart City →</b> Fog + Cloud (tráfico, energía, seguridad)</div>
+          <div class="bi a"><b>Industria 4.0 →</b> Edge + Fog (sensores en planta)</div>
+          <div class="bi a"><b>Salud →</b> Edge + Federated Learning (privacidad del paciente)</div>
+          <div class="bi a"><b>E-commerce →</b> Cloud-only (recomendaciones, fraude)</div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="st a">Federated Learning</div>
+        <div class="cd a"><div class="ct">🔒 ¿Qué es?</div><p>Los dispositivos entrenan localmente y solo comparten los parámetros del modelo (no los datos crudos), protegiendo la privacidad del usuario.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /hoja dorso -->
+
+<div class="tip" style="width:279mm;padding:9px 13px;background:#FEF9C3;border-left:4px solid #CA8A04;font-family:'DM Sans',sans-serif;font-size:10px;color:#713F12;border-radius:3px;">
+  <b>📋 Cómo imprimir:</b> Ctrl+P → Orientación <b>Horizontal / Landscape</b> → Sin márgenes → Escala <b>100%</b>.<br>
+  Imprime LADO 1, voltea la hoja, imprime LADO 2. Dobla en 3 partes iguales siguiendo las líneas punteadas.
+</div>
+
+</body>
+</html>

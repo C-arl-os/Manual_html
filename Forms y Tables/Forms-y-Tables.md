@@ -33,6 +33,12 @@ _Apuntes diarios y ejemplos prácticos_
     - [What Are the Different Form States, and Why Are They Important?](#what-are-the-different-form-states-and-why-are-they-important)
       - [Estados de los Formularios en HTML (Form States)](#estados-de-los-formularios-en-html-form-states)
   - [Respuestas a las preguntas de repaso](#respuestas-a-las-preguntas-de-repaso-1)
+  - [Trabajar con Tables](#trabajar-con-tables)
+    - [¿Para qué se utilizan las tablas HTML y para qué no se deberían utilizar?](#para-qué-se-utilizan-las-tablas-html-y-para-qué-no-se-deberían-utilizar)
+      - [¿Para qué sirven las tablas?](#para-qué-sirven-las-tablas)
+      - [Jerarquía de una tabla](#jerarquía-de-una-tabla)
+  - [¿Tablas vs Divs?](#tablas-vs-divs)
+  - [Respuestas a las preguntas de repaso](#respuestas-a-las-preguntas-de-repaso-2)
 
 
 ## Trabajar con Forms
@@ -488,3 +494,145 @@ Porque mejoran la **experiencia del usuario** al:
 
 3. **¿Cuándo ocurre el estado `focused`?**
    → Cuando el usuario **hace clic en el input o lo selecciona con la tecla `Tab`**.
+
+
+## Trabajar con Tables
+###  ¿Para qué se utilizan las tablas HTML y para qué no se deberían utilizar?
+
+
+
+#### ¿Para qué sirven las tablas?
+
+Las tablas HTML se usan para **mostrar datos tabulares** (información organizada en filas y columnas). Son una de las formas más antiguas de mostrar datos en un navegador (desde los años 90).
+
+> ⚠️ Las tablas **NO deben usarse** para diseñar el layout de una página. Para eso se usa **CSS Flexbox y Grid**.
+
+---
+
+#### Jerarquía de una tabla
+
+```html
+<table>
+│
+├── <thead>  → Encabezado de la tabla
+│     └── <tr>  → Fila
+│           └── <th>  → Celda de título
+│
+├── <tbody>  → Cuerpo de la tabla
+│     └── <tr>  → Fila
+│           ├── <th>  → Celda de encabezado de fila
+│           └── <td>  → Celda de dato
+│
+└── <tfoot>  → Pie de la tabla
+      └── <tr>  → Fila
+            └── <th>  → Celda de pie
+```
+
+---
+
+**Elementos principales**
+
+| Elemento | ¿Qué es? |
+|----------|----------|
+| `<table>` | Contenedor principal de la tabla |
+| `<thead>` | Sección de encabezado |
+| `<tbody>` | Sección del cuerpo (los datos) |
+| `<tfoot>` | Sección del pie |
+| `<tr>` | Fila de la tabla (Table Row) |
+| `<th>` | Celda de encabezado (Table Header) |
+| `<td>` | Celda de dato (Table Data) |
+
+---
+
+**Tabla mínima con todos los elementos**
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>Título de la tabla</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Primera Fila</th>
+      <td>Primer dato</td>
+    </tr>
+    <tr>
+      <th>Segunda Fila</th>
+      <td>Segundo dato</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Pie de tabla: autor, fecha, etc.</th>
+    </tr>
+  </tfoot>
+</table>
+```
+
+---
+
+**Ejemplo real (Bureau of Labor Statistics)**
+
+```html
+<table id="quickfacts">
+  <thead>
+    <tr>
+      <th colspan="2">Datos: Desarrolladores de Software</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Salario Medio 2023</th>
+      <td>$130,160 por año</td>
+    </tr>
+    <tr>
+      <th>Educación requerida</th>
+      <td>Licenciatura</td>
+    </tr>
+    <tr>
+      <th>Perspectiva laboral 2022-32</th>
+      <td>25% (Mucho más rápido que el promedio)</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+> El atributo `colspan="2"` hace que una celda ocupe **2 columnas**.
+
+---
+
+## ¿Tablas vs Divs?
+
+Algunos desarrolladores usan `<div>` para imitar tablas, pero:
+
+| | `<table>` | `<div>` |
+|---|---|---|
+| ¿Semánticamente correcto? | ✅ Sí | ❌ No |
+| ¿Recomendado para datos? | ✅ Sí | ❌ No |
+| ¿Para layouts de página? | ❌ No | ❌ No (usar CSS Grid/Flexbox) |
+
+---
+
+## Respuestas a las preguntas de repaso
+
+1. **¿Qué elementos están dentro de un `<tr>`?**
+   → **`<td>` y `<th>`**
+
+2. **¿Cuáles son las secciones principales de una tabla HTML?**
+   → **`<thead>`, `<tbody>` y `<tfoot>`**
+
+3. **¿Para qué se recomiendan las tablas HTML hoy en día?**
+   → **Para mostrar datos tabulares** (no para layouts de página).
+
+**Diccionario**
+
+- Still: Todavía / Aún / No obstante (dependiendo de si indica tiempo o contraste).
+- Earliest ways: Las formas más antiguas / Los primeros métodos.
+- Way back: Mucho tiempo atrás / Hace mucho tiempo.
+- Hierarchy: Jerarquía (estructura de niveles, como un árbol genealógico o de carpetas).
+- Instead: En su lugar / En vez de ello.
+- Might: Podría / Puede que (indica posibilidad).
+- Non-data: No relacionado con datos / Información que no son datos puros (como metadatos o formato).
+- Depth: Profundidad (en programación, se refiere a qué tan "profundo" llega una rama en una estructura).
