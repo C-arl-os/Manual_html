@@ -32,11 +32,19 @@ _Apuntes diarios y ejemplos prácticos_
       - [Teclados de Texto Grande (Large Print Keyboards)](#teclados-de-texto-grande-large-print-keyboards)
     - [Magnificadores de Pantalla (Screen Magnifiers)](#magnificadores-de-pantalla-screen-magnifiers)
       - [¿Qué son?](#qué-son)
-  - [¿Cómo funcionan?](#cómo-funcionan)
-  - [¿Para qué se usan?](#para-qué-se-usan)
-  - [Buenas prácticas para desarrolladores](#buenas-prácticas-para-desarrolladores)
-  - [Screen magnifiers integrados por sistema operativo](#screen-magnifiers-integrados-por-sistema-operativo)
-  - [Magnificadores de terceros (Third-party)](#magnificadores-de-terceros-third-party)
+      - [¿Cómo funcionan?](#cómo-funcionan)
+      - [¿Para qué se usan?](#para-qué-se-usan)
+    - [Software de Reconocimiento de Voz (Voice Recognition Software)](#software-de-reconocimiento-de-voz-voice-recognition-software)
+      - [¿Qué es?](#qué-es)
+      - [¿Para qué se usa?](#para-qué-se-usa)
+- [Herramientas de Auditoría de Accesibilidad](#herramientas-de-auditoría-de-accesibilidad)
+  - [¿Qué es una herramienta de auditoría de accesibilidad?](#qué-es-una-herramienta-de-auditoría-de-accesibilidad)
+  - [Herramientas gratuitas de auditoría](#herramientas-gratuitas-de-auditoría)
+    - [1. Google Lighthouse](#1-google-lighthouse)
+    - [2. WAVE](#2-wave)
+    - [3. IBM Equal Access Accessibility Checker](#3-ibm-equal-access-accessibility-checker)
+  - [Comparación de herramientas](#comparación-de-herramientas)
+  - [Recuerda siempre](#recuerda-siempre)
   - [Respuestas a las preguntas de repaso](#respuestas-a-las-preguntas-de-repaso)
 
 ---
@@ -344,7 +352,7 @@ Los **screen magnifiers** son herramientas que ayudan a personas con **visión r
 
 ---
 
-## ¿Cómo funcionan?
+#### ¿Cómo funcionan?
 
 Amplían textos, gráficos y otros elementos en la pantalla de una computadora o dispositivo móvil.
 
@@ -354,7 +362,7 @@ Amplían textos, gráficos y otros elementos en la pantalla de una computadora o
 
 ---
 
-## ¿Para qué se usan?
+#### ¿Para qué se usan?
 
 | Uso | Descripción |
 |-----|-------------|
@@ -365,7 +373,7 @@ Amplían textos, gráficos y otros elementos en la pantalla de una computadora o
 
 ---
 
-## Buenas prácticas para desarrolladores
+**Buenas prácticas para desarrolladores**
 
 Para que los productos digitales sean compatibles con screen magnifiers, los desarrolladores deben:
 
@@ -378,7 +386,7 @@ Para que los productos digitales sean compatibles con screen magnifiers, los des
 
 ---
 
-## Screen magnifiers integrados por sistema operativo
+**Screen magnifiers integrados por sistema operativo**
 
 | Sistema Operativo | Magnificador | Cómo activarlo |
 |-------------------|-------------|----------------|
@@ -390,7 +398,7 @@ Para que los productos digitales sean compatibles con screen magnifiers, los des
 
 ---
 
-## Magnificadores de terceros (Third-party)
+**Magnificadores de terceros (Third-party)**
 
 | Magnificador | Sistema Operativo |
 |-------------|------------------|
@@ -403,7 +411,7 @@ Para que los productos digitales sean compatibles con screen magnifiers, los des
 
 ---
 
-## Respuestas a las preguntas de repaso
+**Respuestas a las preguntas de repaso**
 
 1. **¿Cómo funcionan la mayoría de los screen magnifiers?**
    → **Ampliando los textos, gráficos y otros elementos** en la pantalla de una computadora o dispositivo móvil.
@@ -413,3 +421,201 @@ Para que los productos digitales sean compatibles con screen magnifiers, los des
 
 3. **¿Cuál de los siguientes es un magnificador de terceros?**
    → **ZoomText**
+
+**Diccionary**
+- Magnifiers: Lupas / Amplificadores (se refiere tanto al objeto físico como al software de lupa en Windows/macOS).
+- Impairments: Discapacidades / Deficiencias / Deterioros (ej. visual impairments).
+- Let's delve deeper into: Profundicemos en / Indaguemos más a fondo en.
+- Enlarging: Agrandar / Ampliar.
+- Features: Funciones / Características.
+- By enlarging: Al agrandar / Mediante la ampliación.
+- Staining: Esfuerzo / Fatiga (en contexto de vista: eye straining). También puede significar "manchar" en otros contextos.
+- Fill out forms: Rellenar formularios / Completar formularios.
+- Engage: Interactuar / Participar / Involucrarse.
+- Mainstay: Pilar / Sustento principal / Elemento básico.
+- By going: Al ir / Yendo.
+- Toggle: Alternar / Conmutar (el botón o acción de activar/desactivar algo).
+- May vary from: Puede variar de / Puede ser diferente según.
+---
+
+### Software de Reconocimiento de Voz (Voice Recognition Software)
+
+#### ¿Qué es?
+
+El **software de reconocimiento de voz** ayuda a personas con discapacidades a interactuar con computadoras y dispositivos digitales usando su **voz** en lugar de dispositivos de entrada tradicionales como teclados y ratones.
+
+---
+
+#### ¿Para qué se usa?
+
+Permite a los usuarios con discapacidades:
+
+- Escribir emails y otros documentos
+- Navegar por internet
+- Controlar dispositivos de hogar inteligente (smart home)
+- Ejecutar comandos en la computadora
+
+> Al eliminar la necesidad de interacción física, el software de reconocimiento de voz otorga **independencia y control** a las personas con discapacidades.
+
+---
+
+**¿Quiénes se benefician?**
+
+| Grupo | Razón |
+|-------|-------|
+| Personas con discapacidades visuales | Ceguera o visión reducida |
+| Personas con discapacidades de movilidad | Uso limitado de manos y brazos, artritis, síndrome del túnel carpiano |
+| Personas en recuperación | Lesiones en manos o brazos |
+| Personas con trastornos cognitivos | Problemas de memoria o trastorno de déficit de atención |
+| Personas mayores | Pueden encontrar más fácil usar comandos de voz |
+
+> 💡 Las personas con discapacidades **no son las únicas** que usan esta tecnología. También la usan fuerzas del orden, gamers, conductores y profesionales ocupados.
+
+---
+
+**Software de reconocimiento de voz por plataforma**
+
+| Software | Plataforma | Tipo |
+|----------|-----------|------|
+| **Voice Control** | macOS / iOS | Integrado |
+| **Voice Access** | Android / Windows (versiones recientes) | Integrado |
+| **Windows Speech Recognition** | Windows | Integrado |
+| **Dragon by Nuance** | Windows | Terceros (popular) |
+
+---
+
+**Comparación: Dispositivos tradicionales vs Voz**
+
+| | Teclado y ratón | Reconocimiento de voz |
+|---|---|---|
+| Requiere movimiento físico | ✅ Sí | ❌ No |
+| Accesible para movilidad limitada | ❌ Difícil | ✅ Sí |
+| Accesible para visión reducida | ❌ Difícil | ✅ Sí |
+| Velocidad para usuarios experimentados | ✅ Alta | ✅ Alta |
+
+---
+
+**Respuestas a las preguntas de repaso**
+
+1. **¿Qué dispositivos de entrada reemplaza el software de reconocimiento de voz?**
+   → **Teclados y ratones** (keyboards and mice).
+
+2. **¿Quién sería el menos beneficiado por el software de reconocimiento de voz?**
+   → **Personas con poco movimiento en las piernas** — el reconocimiento de voz ayuda con limitaciones de manos, brazos y visión, no de piernas.
+
+3. **¿Cuál de los siguientes NO es un software de reconocimiento de voz?**
+   → **Audacity** — es un editor de audio, no un software de reconocimiento de voz.
+
+**Dictionary**
+
+- Disabilities: Discapacidades.
+- Interact: Interactuar.
+- Let's: Vamos a... / Hagamos... (contracción de let us, usada para proponer una acción).
+- Instead: En su lugar / En vez de eso.
+- Input: Entrada / Entrada de datos (ej. keyboard input es la entrada por teclado).
+- Surfing: Navegar (específicamente "navegar por la red").
+- Net: Red / Internet (forma corta de The Internet).
+- Impairments: Deficiencias / Deterioros / Discapacidades.
+- Carpal tunnel: Túnel carpiano (la zona de la muñeca que suele inflamarse por el uso repetitivo del mouse).
+- Arm injuries: Lesiones en el brazo.
+- Law: Ley.
+- Enforcement: Aplicación / Ejecución / Cumplimiento (ej. law enforcement se traduce como "fuerzas del orden" o "aplicación de la ley").
+
+
+---
+# Herramientas de Auditoría de Accesibilidad
+
+## ¿Qué es una herramienta de auditoría de accesibilidad?
+
+Es una aplicación que ayuda a **mejorar la accesibilidad** del contenido digital reportando problemas que pueden encontrarse mediante pruebas automatizadas. Aplica para sitios web, aplicaciones web y apps móviles.
+
+> ⚠️ **Limitación importante:** Las herramientas automatizadas solo detectan aproximadamente **un tercio** de todos los posibles problemas de accesibilidad. Siempre se requieren **pruebas manuales**, preferiblemente realizadas por personas con discapacidades.
+
+---
+
+## Herramientas gratuitas de auditoría
+
+### 1. Google Lighthouse
+
+Herramienta popular de métricas web. Se puede usar directamente en **Chrome DevTools** o en línea.
+
+**Métricas que evalúa:**
+- Accesibilidad
+- SEO
+- Mejores prácticas
+- Rendimiento
+
+**¿Cómo usarlo en DevTools?**
+1. Abre DevTools con `F12`
+2. Ve a la pestaña **Lighthouse**
+3. Selecciona las métricas que quieres revisar
+4. Elige el dispositivo a simular
+5. Haz clic en **"Analyze page load"**
+6. Revisa el puntaje y la lista de problemas
+
+**Versión web:** `pagespeed.web.dev`
+
+| Versión | ¿Soporta sitios locales? |
+|---------|--------------------------|
+| DevTools (Chrome) | ✅ Sí |
+| Web (pagespeed.web.dev) | ❌ No |
+
+---
+
+### 2. WAVE
+
+Herramienta confiable de accesibilidad disponible como **extensión de Chrome** o en la web.
+
+**¿Cómo usarlo?**
+- Ingresa la URL de tu sitio web
+- Se genera automáticamente un reporte completo que incluye:
+  - Funcionalidades de accesibilidad implementadas
+  - ARIA
+  - Contraste de colores
+
+---
+
+### 3. IBM Equal Access Accessibility Checker
+
+Herramienta robusta para mejorar la accesibilidad del contenido digital. Disponible como **extensión de Chrome** o **add-on de Firefox**.
+
+**¿Cómo usarlo como extensión de Chrome?**
+1. Descárgala desde la Chrome Web Store
+2. Abre DevTools con `F12`
+3. Ve a la pestaña **"Accessibility Checker"** en el panel Elements
+4. Haz clic en el botón **Scan**
+5. Revisa el reporte generado
+6. Exporta el reporte con **"Export XLS"** (formato Excel y HTML)
+
+---
+
+## Comparación de herramientas
+
+| Herramienta | Disponible como | ¿Sitios locales? |
+|-------------|----------------|-----------------|
+| **Google Lighthouse** | DevTools / Web | ✅ Solo en DevTools |
+| **WAVE** | Extensión Chrome / Web | ❌ No |
+| **IBM Equal Access** | Extensión Chrome / Add-on Firefox | ✅ Sí |
+
+---
+
+## Recuerda siempre
+
+Las herramientas automatizadas son un **punto de partida**, no una solución completa:
+
+- Un puntaje perfecto **no significa** que tu contenido sea 100% accesible
+- El rango de problemas que detectan es **limitado**
+- Siempre se necesitan **pruebas manuales** para garantizar una experiencia más accesible
+
+---
+
+## Respuestas a las preguntas de repaso
+
+1. **¿Cuál describe mejor una herramienta de auditoría de accesibilidad?**
+   → **Evalúa qué tan accesible es tu contenido digital.**
+
+2. **¿Cómo se puede usar el IBM Equal Access Accessibility Checker?**
+   → **Como extensión de Chrome, add-on de Firefox, o paquete NPM.**
+
+3. **¿Cuál es una limitación de la versión web de Google Lighthouse?**
+   → **No puede probar sitios web locales.**
